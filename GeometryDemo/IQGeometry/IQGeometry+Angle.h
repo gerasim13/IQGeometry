@@ -6,7 +6,20 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//________________________________________________________________________________________
+
+#ifndef IQGeometryAngle_h
+#define IQGeometryAngle_h
+
+//________________________________________________________________________________________
+
+#include <CoreGraphics/CoreGraphics.h>
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_BEGIN
+
+//________________________________________________________________________________________
 
 /*Angle conversion*/
 CGFloat IQDegreeToRadian(CGFloat angle);
@@ -16,3 +29,13 @@ CGFloat IQRadianToDegree(CGFloat radians);
 //    Say the distances are P1-P2 = A, P2-P3 = B and P3-P1 = C:
 //    Angle = arccos ( (B^2-A^2-C^2) / 2AC )
 CGFloat IQPointGetAngle(CGPoint centerPoint, CGPoint point1, CGPoint point2);
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_END
+
+//________________________________________________________________________________________
+
+#endif
+
+//________________________________________________________________________________________

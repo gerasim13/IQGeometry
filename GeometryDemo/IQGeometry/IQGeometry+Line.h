@@ -6,7 +6,20 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//________________________________________________________________________________________
+
+#ifndef IQGeometryCGLine_h
+#define IQGeometryCGLine_h
+
+//________________________________________________________________________________________
+
+#include <CoreGraphics/CoreGraphics.h>
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_BEGIN
+
+//________________________________________________________________________________________
 
 struct IQLine {
     CGPoint beginPoint;
@@ -16,12 +29,12 @@ typedef struct IQLine IQLine;
 
 IQLine IQLineMake(CGPoint beginPoint, CGPoint endPoint);
 
+//________________________________________________________________________________________
 
+CF_EXTERN_C_END
 
-@interface NSValue (Line)
+//________________________________________________________________________________________
 
-+ (id)valueWithIQLine:(IQLine)line;
+#endif
 
-- (IQLine)lineValue;
-
-@end
+//________________________________________________________________________________________

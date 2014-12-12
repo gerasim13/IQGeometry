@@ -6,8 +6,21 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "IQGeometry+Line.h"
+//________________________________________________________________________________________
+
+#ifndef IQGeometryCGPoint_h
+#define IQGeometryCGPoint_h
+
+//________________________________________________________________________________________
+
+#include <CoreGraphics/CoreGraphics.h>
+#include "IQGeometry+Line.h"
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_BEGIN
+
+//________________________________________________________________________________________
 
 CGPoint IQPointGetMidPoint(CGPoint point1, CGPoint point2);
 
@@ -31,12 +44,7 @@ CGPoint IQPointOfIntersect(IQLine line1, IQLine line2);
 
 CGFloat IQPointGetDistanceOfPoint(CGPoint point, IQLine line);
 
-/* Centroid of points, A, B and C is (x1+x2+x3)/3, (y1+y2+y3)/3 */
-CGPoint IQPointCentroidOfPoints(NSArray* points);
-
 CGPoint IQPointRotate(CGPoint basePoint,CGPoint point, CGFloat angle);
-
-CGPoint IQPointGetNearPoint(CGPoint basePoint, NSArray *points);
 
 CGPoint IQPointFlipHorizontal(CGPoint point, CGRect outerRect);
 
@@ -51,8 +59,12 @@ CGPoint IQPointScale(CGPoint aPoint, CGFloat wScale, CGFloat hScale);
 // Flipping coordinates
 CGPoint IQPointFlip(CGPoint point);
 
+//________________________________________________________________________________________
 
+CF_EXTERN_C_END
 
+//________________________________________________________________________________________
 
+#endif
 
-
+//________________________________________________________________________________________

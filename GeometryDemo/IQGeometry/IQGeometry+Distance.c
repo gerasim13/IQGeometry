@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import "IQGeometry+Distance.h"
+#include "IQGeometry+Distance.h"
+#include <math.h>
 
 CGFloat IQPointGetDistance(CGPoint point1, CGPoint point2)
 {
@@ -14,6 +15,6 @@ CGFloat IQPointGetDistance(CGPoint point1, CGPoint point2)
     CGFloat fx = (point2.x - point1.x);
     CGFloat fy = (point2.y - point1.y);
     
-    return sqrt((fx*fx + fy*fy));
+    return sqrtf((fx*fx + fy*fy));
 }
 

@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import "IQGeometry+Size.h"
+#include "IQGeometry+Size.h"
+#include <math.h>
 
 CGSize IQSizeScale(CGSize aSize, CGFloat wScale, CGFloat hScale)
 {
@@ -47,4 +48,3 @@ CGSize IQSizeFitInSize(CGSize sourceSize, CGSize destSize)
     
 	return newSize;
 }
-

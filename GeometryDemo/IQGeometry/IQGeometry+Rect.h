@@ -6,7 +6,20 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//________________________________________________________________________________________
+
+#ifndef IQGeometryConvenience_h
+#define IQGeometryConvenience_h
+
+//________________________________________________________________________________________
+
+#include <CoreGraphics/CoreGraphics.h>
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_BEGIN
+
+//________________________________________________________________________________________
 
 /*Set Origin*/
 CGRect IQRectSetX(CGRect rect, CGFloat x);
@@ -52,3 +65,13 @@ CGRect IQRectFitSizeInRect(CGSize sourceSize, CGRect destRect);
 /*Aspect Fill*/
 CGRect IQRectAspectFillRect(CGSize sourceSize, CGRect destRect);
 CGFloat IQAspectScaleFill(CGSize sourceSize, CGRect destRect);
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_END
+
+//________________________________________________________________________________________
+
+#endif
+
+//________________________________________________________________________________________

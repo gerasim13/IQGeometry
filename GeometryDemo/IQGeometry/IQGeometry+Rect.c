@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import "IQGeometry+Rect.h"
-#import "IQGeometry+Size.h"
+#include "IQGeometry+Rect.h"
+#include "IQGeometry+Size.h"
+#include <math.h>
 
 CGRect IQRectSetX(CGRect rect, CGFloat x)
 {
@@ -123,7 +124,7 @@ CGFloat IQAspectScaleFill(CGSize sourceSize, CGRect destRect)
     CGSize destSize = destRect.size;
     CGFloat scaleW = destSize.width / sourceSize.width;
 	CGFloat scaleH = destSize.height / sourceSize.height;
-    return MAX(scaleW, scaleH);
+    return fmaxf(scaleW, scaleH);
 }
 
 CGRect IQRectAspectFit(CGSize sourceSize, CGRect destRect)
@@ -146,7 +147,7 @@ CGFloat IQAspectScaleFit(CGSize sourceSize, CGRect destRect)
     CGSize destSize = destRect.size;
     CGFloat scaleW = destSize.width / sourceSize.width;
 	CGFloat scaleH = destSize.height / sourceSize.height;
-    return MIN(scaleW, scaleH);
+    return fminf(scaleW, scaleH);
 }
 
 CGRect IQRectAspectFillRect(CGSize sourceSize, CGRect destRect)
@@ -178,11 +179,3 @@ CGRect  IQRectFlipOrigin(CGRect rect)
 {
     return CGRectMake(rect.origin.y, rect.origin.x, rect.size.width, rect.size.height);
 }
-
-
-
-
-
-
-
-

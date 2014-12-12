@@ -6,12 +6,32 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//________________________________________________________________________________________
 
-CGSize  IQSizeScale(CGSize aSize, CGFloat wScale, CGFloat hScale);
+#ifndef IQGeometryCGSize_h
+#define IQGeometryCGSize_h
 
-CGSize  IQSizeFlip(CGSize size);
+//________________________________________________________________________________________
 
-CGSize  IQSizeFitInSize(CGSize sourceSize, CGSize destSize);
+#include <CoreGraphics/CoreGraphics.h>
 
-CGSize  IQSizeGetScale(CGSize sourceSize, CGSize destSize);
+//________________________________________________________________________________________
+
+CF_EXTERN_C_BEGIN
+
+//________________________________________________________________________________________
+
+CGSize IQSizeScale    (CGSize aSize, CGFloat wScale, CGFloat hScale);
+CGSize IQSizeFitInSize(CGSize sourceSize, CGSize destSize);
+CGSize IQSizeGetScale (CGSize sourceSize, CGSize destSize);
+CGSize IQSizeFlip     (CGSize size);
+
+//________________________________________________________________________________________
+
+CF_EXTERN_C_END
+
+//________________________________________________________________________________________
+
+#endif
+
+//________________________________________________________________________________________

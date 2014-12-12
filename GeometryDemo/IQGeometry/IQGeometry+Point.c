@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import "IQGeometry+Point.h"
-#import "IQGeometry+Distance.h"
-#import <UIKit/UIGeometry.h>
+#include "IQGeometry+Point.h"
+#include "IQGeometry+Distance.h"
+#include <math.h>
 
 CGPoint IQPointGetMidPoint(CGPoint point1, CGPoint point2)
 {
@@ -28,7 +28,6 @@ CGPoint IQPointWithDistance(CGPoint point1, CGPoint point2, CGFloat distance)
         //Calculating distance from point1.
         CGFloat px = point1.x + relativePercent * (point2.x - point1.x);
         CGFloat py = point1.y + relativePercent * (point2.y - point1.y);
-        
         //Returning Points
         return CGPointMake(px, py);
     }
@@ -46,71 +45,16 @@ CGPoint IQPointOfIntersect(IQLine line1, IQLine line2)
 
 CGFloat IQPointGetDistanceOfPoint(CGPoint point, IQLine line)
 {
-    CGFloat normalLength = sqrt((line.endPoint.x-line.beginPoint.x)*(line.endPoint.x-line.beginPoint.x)+(line.endPoint.y-line.beginPoint.y)*(line.endPoint.y-line.beginPoint.y));
-    return abs((point.x-line.beginPoint.x)*(line.endPoint.y-line.beginPoint.y)-(point.y-line.beginPoint.y)*(line.endPoint.x-line.beginPoint.x))/normalLength;
-}
-
-CGPoint IQPointCentroidOfPoints(NSArray* points)
-{
-    CGFloat x = 0;
-    CGFloat y = 0;
-    
-    for (NSValue *value in points)
-    {
-        x += [value CGPointValue].x;
-        y += [value CGPointValue].y;
-    }
-    
-    x = x/[points count];
-    y = y/[points count];
-    
-    return CGPointMake(x, y);
+    CGFloat normalLength = sqrtf((line.endPoint.x-line.beginPoint.x)*(line.endPoint.x-line.beginPoint.x)+(line.endPoint.y-line.beginPoint.y)*(line.endPoint.y-line.beginPoint.y));
+    return fabs((point.x-line.beginPoint.x)*(line.endPoint.y-line.beginPoint.y)-(point.y-line.beginPoint.y)*(line.endPoint.x-line.beginPoint.x))/normalLength;
 }
 
 CGPoint IQPointRotate(CGPoint basePoint, CGPoint point, CGFloat angle)
 {
-    CGFloat x = cos(angle) * (point.x-basePoint.x) - sin(angle) * (point.y-basePoint.y) + basePoint.x;
-    CGFloat y = sin(angle) * (point.x-basePoint.x) + cos(angle) * (point.y-basePoint.y) + basePoint.y;
-    
-//    CGFloat x = cos(angle) * (basePoint.x-point.x) - sin(angle) * (basePoint.y-point.y) + point.x;
-//    CGFloat y = sin(angle) * (basePoint.x-point.x) + cos(angle) * (basePoint.y-point.y) + point.y;
-    
+    CGFloat x = cosf(angle) * (point.x-basePoint.x) - sinf(angle) * (point.y-basePoint.y) + basePoint.x;
+    CGFloat y = sinf(angle) * (point.x-basePoint.x) + cosf(angle) * (point.y-basePoint.y) + basePoint.y;
     return CGPointMake(x,y);
 }
-
-CGPoint IQPointGetNearPoint(CGPoint basePoint, NSArray *points)
-{
-    CGFloat minimumDistance = 10000;
-    CGPoint nearbyPoint;
-    
-    for (NSValue *aValue in points)
-    {
-        CGPoint aPoint = [aValue CGPointValue];
-        
-        CGFloat currentDistance = IQPointGetDistance(basePoint, aPoint);
-        if (minimumDistance>currentDistance)
-        {
-            nearbyPoint = aPoint;
-            minimumDistance = currentDistance;
-        }
-    }
-    return nearbyPoint;
-}
-
-//CGPoint CGPointAspectFit(CGPoint point, CGSize destSize, CGRect sourceRect)
-//{
-//    CGRect innerRect = CGRectAspectFitRect(destSize, sourceRect);
-//    
-//    point = CGPointAspectFill(point, destSize, sourceRect);
-//    
-//    CGFloat ratioPointWidth = point.x/CGRectGetWidth(sourceRect);
-//    CGFloat ratioPointHeight = point.y/CGRectGetHeight(sourceRect);
-//    
-//    CGFloat pointX = (innerRect.origin.x+CGRectGetWidth(innerRect)*ratioPointWidth);;
-//    CGFloat pointY = (innerRect.origin.y+CGRectGetHeight(innerRect)*ratioPointHeight);
-//    
-//    return CGPointMake(pointX, pointY);
-//}
 
 CGPoint IQPointFlipHorizontal(CGPoint point, CGRect outerRect)
 {
@@ -146,11 +90,3 @@ CGPoint IQPointFlip(CGPoint point)
 {
     return CGPointMake(point.y, point.x);
 }
-
-
-
-
-
-
-
-

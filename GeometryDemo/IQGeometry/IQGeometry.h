@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #if TARGET_OS_IPHONE
     #import "IQGeometry+AffineTransform.h"
     #import "IQGeometry+Angle.h"

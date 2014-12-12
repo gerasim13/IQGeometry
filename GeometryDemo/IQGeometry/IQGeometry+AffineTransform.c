@@ -6,15 +6,16 @@
 //  Copyright (c) 2013 Iftekhar. All rights reserved.
 //
 
-#import "IQGeometry+AffineTransform.h"
+#include "IQGeometry+AffineTransform.h"
+#include <math.h>
 
 CGFloat IQAffineTransformGetAngle(CGAffineTransform t)
 {
-    return atan2(t.b, t.a);
+    return atan2f(t.b, t.a);
 }
 
 CGSize IQAffineTransformGetScale(CGAffineTransform t)
 {
-    return CGSizeMake(sqrt(t.a * t.a + t.c * t.c), sqrt(t.b * t.b + t.d * t.d)) ;
+    return CGSizeMake(sqrtf(t.a * t.a + t.c * t.c), sqrtf(t.b * t.b + t.d * t.d)) ;
 }
 
